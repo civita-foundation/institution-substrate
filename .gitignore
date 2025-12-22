@@ -1,0 +1,93 @@
+###############################################################################
+# macOS
+###############################################################################
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.fseventsd
+
+
+###############################################################################
+# Visual Studio Code
+###############################################################################
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# VS Code workspace files
+*.code-workspace
+
+
+###############################################################################
+# Markdown editing artifacts
+###############################################################################
+
+# Temporary / backup files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+
+# Pandoc / export artifacts (safe to regenerate)
+*.pdf
+*.docx
+*.odt
+*.epub
+*.html
+
+# LaTeX intermediates (if ever used indirectly)
+*.aux
+*.log
+*.out
+*.toc
+
+
+###############################################################################
+# Notes / scratch / local-only work
+###############################################################################
+
+# Local drafts or scratchpads you never want committed
+scratch/
+scratchpad/
+notes_local/
+_private/
+draft_local/
+
+# Per-user working notes
+*.local.md
+*.private.md
+
+
+###############################################################################
+# Git / tooling noise
+###############################################################################
+
+# GitHub Copilot / AI tooling caches (future-proof)
+.github/copilot/
+.ai/
+.cache/
+
+
+###############################################################################
+# Jupyter / misc (in case Markdown embeds tooling later)
+###############################################################################
+
+.ipynb_checkpoints/
+
+
+###############################################################################
+# Explicitly allow Markdown and core project files
+###############################################################################
+
+!*.md
+!README.md
+!LICENSE
