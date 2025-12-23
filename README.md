@@ -62,6 +62,14 @@ Energy → state-change capacity under constraint
 
 This stack is **closed and falsifiable**.
 
+### Boundary Routing (ARC BR)
+
+ARC BR is a **normative specification** defining inter-institution execution semantics under trust-minimal conditions.
+
+Boundary Routing specifies how institutional state transitions propagate or explicitly refuse across institutional boundaries **without discretion, interpretation, or implicit trust**.
+
+Any system claiming support for Boundary Routing or inter-institution executability **MUST conform** to ARC BR or explicitly declare a fork.
+
 ---
 
 ## How to Read This Repository
