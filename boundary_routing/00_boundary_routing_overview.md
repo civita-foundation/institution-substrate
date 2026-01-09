@@ -1,51 +1,77 @@
-# ARC BR — Boundary Routing & Inter-Institution Executability
-## Overview
+# ARC BR — Boundary Routing & Inter-Institution Executability (CI/EI Aligned Overview)
 
-**Status:** IN PROGRESS  
-**ARC Identifier:** ARC BR  
+**Status:** IN PROGRESS
+**ARC Identifier:** ARC BR
 **Ontology Dependency:** ONTOLOGY.md v2.0 (LOCKED)
+
+---
+
+## Terminology Guardrail (Non-Negotiable)
+
+* **Computable Institution (CI)** defines *what institutional state transitions are decidable*.
+* **Executable Institution (EI)** makes CI outcomes *non-bypassable* through refusal-first routing, authority binding, and immutable memory.
+
+Boundary Routing is defined **first at the CI level** as *computable continuation semantics*.
+It becomes **EI behavior only when routing outcomes cannot be bypassed and are permanently recorded**.
+
+Boundary Routing **does not itself grant execution authority**.
 
 ---
 
 ## Purpose
 
-This ARC formalizes **Boundary Routing** as a first-class execution concept.
+This ARC formalizes **Boundary Routing** as a first-class **institutional continuation mechanism** under trust-minimal conditions.
 
-Boundary Routing defines **how institutional execution continues across institutional boundaries** under trust-minimal conditions, without introducing discretion, interpretation, or implicit trust.
+Boundary Routing defines **how a CI-determined institutional state transition may be continued or explicitly refused across institutional boundaries**, without introducing:
+
+* discretion
+* interpretation
+* narrative reconciliation
+* implicit trust
 
 This ARC extends the Institution Substrate from:
-- **single-institution executability** (CI → ENI → SFEU → TDV → DNI)
-to:
-- **multi-institution executability**
 
-Boundary Routing is not interoperability.
-It is **execution continuation**.
+* **single-institution computability** (CI → ENI → SFEU → TDV)
+* to **cross-institution computable continuation**,
+
+and supports **multi-institution executability** only when coupled with EI guarantees.
+
+Boundary Routing is **not interoperability**.
+It is **institutional state continuation**.
 
 ---
 
 ## Problem Statement
 
 Institutions increasingly depend on actions that cross boundaries:
-- firm → firm
-- firm → state
-- state → regulator
-- platform → counterparty
+
+* firm → firm
+* firm → state
+* state → regulator
+* platform → counterparty
 
 Existing approaches rely on:
-- APIs
-- contracts
-- audits
-- reconciliation
-- trust
+
+* APIs
+* contracts
+* audits
+* reconciliation
+* assumed trust
 
 These approaches fail structurally under:
-- low trust
-- scale
-- adversarial incentives
-- delayed enforcement
-- memory decay
 
-Boundary Routing addresses this failure by making cross-institution propagation **deterministic, attributable, and verifiable**.
+* low trust
+* scale
+* adversarial incentives
+* delayed enforcement
+* memory decay
+
+Boundary Routing addresses this failure by making cross-institution continuation:
+
+* **deterministic**
+* **attributable**
+* **explicitly refusable**
+* **verifiable across time**
 
 ---
 
@@ -54,11 +80,12 @@ Boundary Routing addresses this failure by making cross-institution propagation 
 ### In Scope
 
 This ARC defines:
-- what Boundary Routing **is**
-- when routing is **permitted**
-- what **must be preserved**
-- how routing **fails explicitly**
-- what qualifies as **conformant**
+
+* what Boundary Routing **is** (computable continuation)
+* when routing is **permitted** or **refused**
+* what **must be preserved** across boundaries
+* how routing **fails explicitly**
+* what qualifies as **conformant behavior**
 
 This ARC is **normative**.
 
@@ -67,15 +94,16 @@ This ARC is **normative**.
 ### Out of Scope
 
 This ARC does **not** define:
-- transport protocols
-- cryptographic primitives
-- networking topology
-- identity systems
-- pricing or business models
-- governance or policy decisions
-- application UX
 
-Those belong to **engineering** or **product** layers.
+* transport protocols
+* cryptographic primitives
+* networking topology
+* identity systems
+* pricing or business models
+* governance or policy decisions
+* application UX
+
+Those belong to **engineering**, **product**, or **governance** layers.
 
 ---
 
@@ -83,21 +111,25 @@ Those belong to **engineering** or **product** layers.
 
 This ARC assumes:
 
-1. **Ontology is Locked**  
-   All terms are defined in `ONTOLOGY.md v2.0`.  
+1. **Ontology is Locked**
+   All terms are defined in `ONTOLOGY.md v2.0`.
    No new ontology is introduced here.
 
-2. **Execution vs Governance Separation Holds**  
-   Boundary Routing operates strictly in the execution domain.
+2. **CI / EI Separation Holds**
+   Boundary Routing defines *computable continuation*.
+   EI alone guarantees *non-bypassable execution*.
 
-3. **Trust-Minimal Conditions Are Default**  
+3. **Execution vs Governance Separation Holds**
+   Boundary Routing never performs governance, judgment, or rule creation.
+
+4. **Trust-Minimal Conditions Are Default**
    No good faith, shared administration, or narrative reconciliation is assumed.
 
-4. **TDV Exists**  
-   Verifiable institutional memory across time is required.
+5. **TDV Exists**
+   Verifiable institutional memory across time is required for EI-level guarantees.
 
-5. **Failure Is Explicit**  
-   Silent failure is forbidden.
+6. **Failure Is Explicit**
+   Silent failure, suppression, or ambiguity is forbidden.
 
 If any assumption is violated, Boundary Routing is invalid.
 
@@ -106,29 +138,33 @@ If any assumption is violated, Boundary Routing is invalid.
 ## What Boundary Routing Is Not
 
 Boundary Routing is **not**:
-- messaging
-- event streaming
-- API orchestration
-- data exchange
-- interoperability middleware
-- workflow integration
-- federation
+
+* messaging
+* event streaming
+* API orchestration
+* data exchange
+* interoperability middleware
+* workflow integration
+* federation
 
 Those move **information**.
 
-Boundary Routing moves **institutional state**.
+Boundary Routing moves **institutionally valid state transitions or explicit refusals**.
 
 ---
 
 ## Architectural Position
 
-Boundary Routing sits **above SFEU execution** and **below governance**.
+Boundary Routing sits:
 
-It is the mechanism that allows:
-- execution to propagate
-- obligations to traverse institutions
-- legitimacy to be enforced structurally
+* **above CI-defined execution (SFEU)**
+* **below governance**
 
+It enables:
+
+* continuation of admissible institutional state
+* traversal of obligations across institutions
+* structural preservation of legitimacy
 
 ```
 CI
@@ -138,24 +174,28 @@ CI
 ⊃ Boundary Routing
 ```
 
+Boundary Routing may be *computed* without EI.
+Boundary Routing becomes *unavoidable* only under EI.
 
 ---
 
-## Table of Contents (Upcoming Only)
+## Table of Contents
 
-- **BR-1** — Formal Definition & Invariants  
-- **BR-2** — Boundary SFEUs (Execution at the Boundary)  
-- **BR-3** — Obligation Packet (Cross-Boundary Payload)  
-- **BR-4** — Refusal & Non-Routing Semantics  
-- **BR-5** — Time & Memory Across Boundaries  
-- **BR-6** — Trust-Minimal Security Properties  
-- **BR-7** — Conformance & Standardization Surface  
+* **BR-1** — Formal Definition & Invariants
+* **BR-2** — Boundary SFEUs (Execution at the Boundary)
+* **BR-3** — Obligation Packet (Cross-Boundary Payload)
+* **BR-4** — Refusal & Non-Routing Semantics
+* **BR-5** — Time & Memory Across Boundaries
+* **BR-6** — Trust-Minimal Security Properties
+* **BR-7** — Conformance & Standardization Surface
 
 ---
 
 ## Design Principle (One Line)
 
-> **If an institutional action cannot be deterministically continued or explicitly refused across a boundary, it is not executable.**
+> **If an institutional state transition cannot be deterministically continued or explicitly refused across a boundary, it is not computably routable.**
+
+Non-bypassability is an **EI property**, not a routing assumption.
 
 ---
 
@@ -163,11 +203,11 @@ CI
 
 This ARC is complete when:
 
-1. Boundary routing can occur without interpretation.
-2. Refusal is explicit, attributable, and non-political.
+1. Boundary routing can be computed without interpretation.
+2. Refusal is explicit, attributable, and enumerable.
 3. TDV verifiability survives across institutions and time.
-4. Conformance can be tested independently.
-5. No new ontology is required.
+4. Conformance can be tested independently of implementations.
+5. No new ontology or authority is introduced.
 
 ---
 
@@ -176,9 +216,10 @@ This ARC is complete when:
 This ARC is **normative**.
 
 All systems, protocols, or implementations that claim to support:
-- Boundary Routing,
-- Inter-Institution Executability, or
-- Cross-Institution Execution Continuation
+
+* Boundary Routing,
+* Inter-Institution Executability, or
+* Cross-Institution Execution Continuation
 
 **MUST conform** to the requirements defined in BR-1 through BR-7.
 
@@ -188,5 +229,5 @@ Silence, partial adoption, or semantic substitution does not constitute conforma
 
 ---
 
-**Next File:**  
+**Next File:**
 `01_br1_formal_definition_and_invariants.md`

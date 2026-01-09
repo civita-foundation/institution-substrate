@@ -1,9 +1,20 @@
 # ARC BR — Boundary Routing & Inter-Institution Executability
-## BR-7 — Conformance & Standardization Surface
 
-**Status:** IN PROGRESS  
-**Progress Marker:** BR-7  
+## BR-7 — Conformance & Standardization Surface (CI/EI Aligned)
+
+**Status:** IN PROGRESS
+**Progress Marker:** BR-7
 **Ontology Assumption:** ONTOLOGY.md v2.0 is LOCKED
+
+---
+
+## Terminology Guardrail (Non-Negotiable)
+
+* **Computable Institution (CI)** defines *computable boundary routing semantics* and determines whether continuation or refusal is admissible.
+* **Executable Institution (EI)** makes CI routing outcomes *non-bypassable* and preserves them as immutable institutional memory.
+
+**Boundary Routing conformance is asserted only at the EI level.**
+CI-level routing logic may be correct but is **not conformant** unless made non-bypassable and observable.
 
 ---
 
@@ -12,43 +23,35 @@
 This file defines the **conformance criteria** and **standardization surface** for Boundary Routing.
 
 Its function is to make Boundary Routing:
-- testable,
-- comparable,
-- fork-visible,
-- and certifiable,
 
-without prescribing implementations or vendors.
+* testable,
+* comparable,
+* fork-visible, and
+* objectively assessable,
 
-Boundary Routing becomes a **standard** only when conformance is unambiguous.
+**without prescribing implementations, vendors, or governance bodies**.
+
+Boundary Routing becomes a **standard** only when conformance is unambiguous and behaviorally observable.
 
 ---
 
 ## Scope & Non-Goals
 
 ### In Scope
-- Conformance requirements (normative)
-- MUST / SHOULD / MUST NOT criteria
-- Observable behaviors
-- Non-conformance signals
-- Versioning and compatibility rules
+
+* Normative conformance requirements
+* MUST / SHOULD / MUST NOT criteria
+* Observable boundary behaviors
+* Non-conformance signals
+* Versioning and compatibility rules
 
 ### Out of Scope
-- Certification authorities
-- Governance bodies
-- Compliance processes
-- Pricing or licensing
-- Branding or trademarks
 
----
-
-## Table of Contents (Upcoming Only)
-
-- BR-7.1 Conformance Levels
-- BR-7.2 Normative Requirements
-- BR-7.3 Observable Behaviors
-- BR-7.4 Non-Conformance Signals
-- BR-7.5 Versioning & Compatibility
-- BR-7.6 Reference Implementations
+* Certification authorities
+* Governance bodies
+* Compliance processes
+* Pricing or licensing
+* Branding or trademarks
 
 ---
 
@@ -57,48 +60,48 @@ Boundary Routing becomes a **standard** only when conformance is unambiguous.
 Boundary Routing conformance is **binary**.
 
 A system is either:
-- **Boundary-Routing-Conformant**, or
-- **Not Boundary-Routing-Conformant**
 
-Partial conformance is not recognized.
+* **Boundary-Routing-Conformant (EI)**, or
+* **Not Boundary-Routing-Conformant**
 
-This avoids ambiguity and “marketing compliance.”
+Partial, aspirational, or marketing conformance is not recognized.
 
 ---
 
-## BR-7.2 Normative Requirements
+## BR-7.2 Normative Requirements (EI-Level)
 
-A conformant system **MUST** satisfy all of the following:
+A Boundary-Routing-Conformant system **MUST** satisfy **all** of the following:
 
 1. Implement BSFEU semantics (BR-2)
 2. Accept only valid Obligation Packets (BR-3)
-3. Emit explicit refusals (BR-4)
-4. Preserve time ordering across boundaries (BR-5)
-5. Maintain TDV-verifiable memory (BR-5)
-6. Operate under trust-minimal assumptions (BR-6)
+3. Emit explicit refusals for all non-routed cases (BR-4)
+4. Preserve institutional time ordering across boundaries (BR-5)
+5. Maintain TDV-verifiable, immutable memory (BR-5)
+6. Operate under trust-minimal security assumptions (BR-6)
 
 A conformant system **MUST NOT**:
-- introduce discretionary overrides,
-- rely on narrative interpretation,
-- suppress refusal visibility,
-- require implicit trust.
+
+* introduce discretionary overrides,
+* rely on narrative interpretation,
+* suppress refusal visibility,
+* require implicit trust between institutions.
 
 ---
 
 ## BR-7.3 Observable Behaviors
 
-Conformance is assessed by **observable behavior**, not claims.
+Conformance is assessed by **observable behavior**, not claims, documentation, or intent.
 
 Observable indicators include:
 
-- deterministic acceptance or refusal,
-- explicit refusal codes,
-- monotonic time references,
-- verifiable TDV chains,
-- absence of silent drops,
-- absence of interpretive fields.
+* deterministic continuation or refusal,
+* explicit refusal codes for all non-routing outcomes,
+* monotonic institutional time references,
+* verifiable TDV chains across boundaries,
+* absence of silent drops,
+* absence of interpretive or narrative fields in routing logic.
 
-If behavior cannot be observed or reconstructed, it is non-conformant.
+If behavior cannot be independently observed or reconstructed, the system is non-conformant.
 
 ---
 
@@ -106,15 +109,15 @@ If behavior cannot be observed or reconstructed, it is non-conformant.
 
 Any of the following indicate **non-conformance**:
 
-- silent non-routing
-- implicit retries
-- discretionary approval steps
-- rule substitution
-- unverifiable execution claims
-- narrative explanations in boundary logic
-- reliance on shared trust assumptions
+* silent non-routing
+* implicit retries or fallbacks
+* discretionary approval steps
+* rule substitution or semantic mapping
+* unverifiable continuation or refusal claims
+* narrative explanations embedded in boundary logic
+* reliance on shared administrators or trust assumptions
 
-Non-conformance is structural, not moral.
+Non-conformance is **structural**, not moral or operational.
 
 ---
 
@@ -122,31 +125,33 @@ Non-conformance is structural, not moral.
 
 Boundary Routing versions:
 
-- MUST be explicitly declared
-- MUST be backward-identifiable
-- MUST NOT reinterpret prior semantics
+* MUST be explicitly declared
+* MUST be backward-identifiable
+* MUST NOT reinterpret prior semantics
 
 Compatibility rules:
 
-- newer versions may extend capabilities
-- older versions must remain verifiable
-- routing between incompatible versions MUST refuse explicitly
+* newer versions may extend capabilities
+* older versions MUST remain verifiable
+* routing between incompatible versions MUST refuse explicitly
 
-Silent downgrade or upgrade is forbidden.
+Silent downgrade, upgrade, or reinterpretation is forbidden.
 
 ---
 
 ## BR-7.6 Reference Implementations
 
 Reference implementations may exist to:
-- demonstrate feasibility,
-- validate interpretation,
-- test edge cases.
+
+* demonstrate feasibility,
+* validate interpretation,
+* test edge cases.
 
 Reference implementations:
-- do not define the standard,
-- do not override normative text,
-- may be open or closed source.
+
+* do not define the standard,
+* do not override normative text,
+* may be open or closed source.
 
 The **standard is defined solely by this ARC**.
 
@@ -156,10 +161,10 @@ The **standard is defined solely by this ARC**.
 
 BR-7 is complete when:
 
-1. Conformance can be tested without vendor cooperation.
-2. Forks are visible via behavior.
-3. Compatibility rules prevent semantic drift.
-4. Boundary Routing qualifies as a standard surface.
+1. Boundary Routing conformance can be tested without vendor cooperation
+2. Forks and deviations are visible via behavior alone
+3. Compatibility rules prevent semantic drift
+4. Boundary Routing qualifies as a stable standard surface
 
 ---
 
@@ -167,11 +172,11 @@ BR-7 is complete when:
 
 ARC BR is complete when **all BR-1 through BR-7** are satisfied and:
 
-> Boundary execution can propagate or refuse deterministically,  
-> across institutions,  
-> without trust,  
-> without discretion,  
-> and without narrative reconciliation.
+> Boundary routing outcomes can be deterministically continued or refused,
+> across institutions,
+> under CI-defined semantics,
+> made non-bypassable by EI guarantees,
+> without trust, discretion, or narrative reconciliation.
 
 ---
 

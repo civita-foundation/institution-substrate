@@ -1,19 +1,33 @@
 # ARC BR — Boundary Routing & Inter-Institution Executability
-## BR-2 — Boundary SFEUs (BSFEU): The Execution Atom at the Boundary
 
-**Status:** IN PROGRESS  
-**Progress Marker:** BR-2  
+## BR-2 — Boundary SFEUs (BSFEU): CI/EI-Aligned Boundary Execution Unit
+
+**Status:** IN PROGRESS
+**Progress Marker:** BR-2
 **Ontology Assumption:** ONTOLOGY.md v2.0 is LOCKED
+
+---
+
+## Terminology Guardrail (Non-Negotiable)
+
+* **Computable Institution (CI)** determines *whether an institutional state transition is admissible and decidable*.
+* **Executable Institution (EI)** makes CI outcomes *non-bypassable* through refusal-first routing, authority binding, and immutable memory.
+
+A **BSFEU operates at the CI-defined boundary**.
+It does **not** by itself confer execution authority or enforcement.
+
+BSFEU outcomes become unavoidable **only when embedded in an EI**.
 
 ---
 
 ## Purpose
 
-This file defines **Boundary Status-Function Execution Units (BSFEUs)** — the minimal, non-discretionary execution units that operate **at institutional boundaries**.
+This file defines **Boundary Status-Function Execution Units (BSFEUs)** — the minimal, non-discretionary units that evaluate **cross-boundary continuation or refusal** of CI-determined institutional state transitions.
 
-A BSFEU is the **only** component permitted to execute cross-boundary continuation of institutional state under Boundary Routing. It converts a routed state transition into either:
-- a **continued executable state**, or
-- an **explicit terminal failure**.
+A BSFEU is the **only component permitted to decide whether a routed state transition may continue across an institutional boundary**, producing either:
+
+* a **continued CI-admissible state**, or
+* an **explicit terminal refusal**.
 
 No interpretation. No negotiation. No silent outcomes.
 
@@ -22,76 +36,72 @@ No interpretation. No negotiation. No silent outcomes.
 ## Scope & Non-Goals
 
 ### In Scope
-- Definition of BSFEU
-- Execution responsibilities and constraints
-- Input/output contracts
-- Failure typing and semantics
-- Relationship to SFEU, ENI, and TDV
+
+* Definition of BSFEU
+* CI/EI-aligned execution responsibilities and constraints
+* Input/output contracts
+* Explicit failure typing and semantics
+* Relationship to SFEU, ENI, and TDV
 
 ### Out of Scope
-- Transport or networking
-- Cryptography choices
-- Identity provisioning
-- Governance workflows
-- Product integration details
 
----
-
-## Table of Contents (Upcoming Only)
-
-- BR-2.1 Definition & Role
-- BR-2.2 Position in the Execution Stack
-- BR-2.3 Input Contract
-- BR-2.4 Execution Semantics
-- BR-2.5 Output Contract
-- BR-2.6 Failure Typing
-- BR-2.7 Forbidden Capabilities
+* Transport or networking
+* Cryptography choices
+* Identity provisioning
+* Governance workflows
+* Product or UI integration
 
 ---
 
 ## BR-2.1 Definition & Role
 
-A **Boundary Status-Function Execution Unit (BSFEU)** is an execution-only unit that:
+A **Boundary Status-Function Execution Unit (BSFEU)** is a deterministic, execution-only unit that:
 
-> deterministically evaluates whether a routed institutional state transition may continue execution within the receiving institution, and produces a corresponding state transition or explicit failure.
+> evaluates whether a **CI-determined institutional state transition** may be *continued* within a receiving institution, or must be *explicitly refused*, without interpretation.
 
 BSFEU is:
-- execution-native,
-- non-interpretive,
-- legitimacy-sensitive,
-- refusal-capable.
 
-BSFEU is **not** a gateway, adapter, or API.
+* execution-native
+* non-interpretive
+* refusal-capable
+* legitimacy-sensitive
+
+BSFEU is **not**:
+
+* a gateway
+* an adapter
+* an API
+* a governance actor
 
 ---
 
 ## BR-2.2 Position in the Execution Stack
 
-BSFEU operates **after** local SFEU execution on the sender side and **before** any local SFEU execution on the receiver side.
+BSFEU operates **after** local CI/SFEU determination on the originating side and **before** any local execution or enforcement on the receiving side.
 
 ```
-[ Origin SFEU ]
-|
-v
-[ TDV Commit ]
-|
-v
+[ Origin SFEU (CI) ]
+        |
+        v
+[ TDV Reference ]
+        |
+        v
 [ Boundary Routing ]
-|
-v
-[ BSFEU ] <-- THIS FILE
-|
-v
-[ Local SFEU(s) or Explicit Failure ]
+        |
+        v
+[ BSFEU ]  <-- CI-level boundary decision
+        |
+        v
+[ Local SFEU(s) or Explicit Refusal ]
 ```
-
 
 BSFEU:
-- does not execute local business rules,
-- does not modify governance,
-- does not alter past execution.
 
-It decides **only** whether execution may continue.
+* does not execute local business rules
+* does not modify governance
+* does not alter past state
+
+It decides **only** whether CI-defined continuation is admissible.
 
 ---
 
@@ -99,20 +109,20 @@ It decides **only** whether execution may continue.
 
 A BSFEU **MUST** accept exactly the following inputs:
 
-- `state_delta`  
-  The institutional state change produced by the originating SFEU.
+* `state_delta`
+  The institutional state transition determined by the originating CI/SFEU.
 
-- `authority_ref`  
+* `authority_ref`
   A reference to the authority that permitted the originating transition.
 
-- `rule_ref`  
+* `rule_ref`
   A unique identifier for the rule version that fired.
 
-- `time_ref`  
-  An ordered, non-erasable execution time reference.
+* `time_ref`
+  An ordered, non-erasable institutional time reference.
 
-- `tdv_ref`  
-  A pointer enabling independent verification of prior execution.
+* `tdv_ref`
+  A pointer enabling independent verification of the prior transition.
 
 No additional inputs are permitted.
 
@@ -126,16 +136,17 @@ Given valid inputs, the BSFEU MUST:
 
 1. Verify authority provenance
 2. Verify rule identity compatibility
-3. Verify temporal ordering
+3. Verify institutional time ordering
 4. Verify TDV availability
-5. Evaluate local acceptance constraints (rule-bound, pre-declared)
+5. Evaluate local acceptance constraints (rule-bound and pre-declared)
 
 BSFEU **MUST NOT**:
-- infer intent,
-- evaluate fairness,
-- negotiate terms,
-- request human judgment,
-- introduce delays beyond deterministic checks.
+
+* infer intent
+* evaluate fairness
+* negotiate terms
+* request human judgment
+* introduce delays beyond deterministic checks
 
 ---
 
@@ -143,17 +154,20 @@ BSFEU **MUST NOT**:
 
 BSFEU outputs **exactly one** of the following:
 
-### A. Continued Execution State
-- `continued_state`
-- optional `new_time_ref`
-- optional `new_tdv_ref`
+### A. Continued CI-Admissible State
 
-This output authorizes subsequent **local SFEU execution**.
+* `continued_state`
+* optional `new_time_ref`
+* optional `new_tdv_ref`
 
-### B. Explicit Failure
-- `failure_code`
-- `failure_time_ref`
-- optional `failure_tdv_ref`
+This output authorizes **CI-level continuation** only.
+Non-bypassable execution requires EI guarantees.
+
+### B. Explicit Refusal
+
+* `failure_code`
+* `failure_time_ref`
+* optional `failure_tdv_ref`
 
 No silent drops. No partial success.
 
@@ -163,12 +177,12 @@ No silent drops. No partial success.
 
 BSFEU failures **MUST** be explicit and typed:
 
-- `AUTHORITY_INVALID`
-- `RULE_MISMATCH`
-- `TIME_ORDER_VIOLATION`
-- `TDV_UNVERIFIABLE`
-- `LEGITIMACY_WITHDRAWN`
-- `LOCAL_ACCEPTANCE_FAILED`
+* `AUTHORITY_INVALID`
+* `RULE_MISMATCH`
+* `TIME_ORDER_VIOLATION`
+* `TDV_UNVERIFIABLE`
+* `LEGITIMACY_WITHDRAWN`
+* `LOCAL_ACCEPTANCE_FAILED`
 
 Failure codes are enumerable and closed.
 
@@ -178,14 +192,14 @@ Failure codes are enumerable and closed.
 
 A BSFEU **MUST NOT**:
 
-- modify rules
-- reinterpret authority
-- mutate prior state
-- request discretionary approval
-- embed policy logic
-- expose narrative explanations
-- retry implicitly
-- route around failure
+* modify rules
+* reinterpret authority
+* mutate prior state
+* request discretionary approval
+* embed policy logic
+* expose narrative explanations
+* retry implicitly
+* route around failure
 
 Any such capability invalidates BSFEU conformance.
 
@@ -195,12 +209,13 @@ Any such capability invalidates BSFEU conformance.
 
 BR-2 is complete when:
 
-1. The boundary execution role is unambiguous.
-2. No discretion exists at the boundary.
-3. All outcomes are deterministic and explicit.
-4. BSFEU can be validated independently of implementations.
+1. The boundary continuation role is unambiguous at the CI level
+2. No discretion exists at the boundary
+3. All outcomes are deterministic and explicit
+4. EI responsibility is limited to non-bypassability and memory
+5. BSFEU behavior is independently testable
 
 ---
 
-**Next File:**  
+**Next File:**
 `03_br3_obligation_packet.md`
